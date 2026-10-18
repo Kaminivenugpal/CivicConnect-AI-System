@@ -34,9 +34,10 @@ export default function LoginPage() {
       } else {
         navigate('/citizen');
       }
-    } catch (err) {
-      setError(getErrorMessage(err));
-    } finally {
+    }  catch (err) {
+  const message = getErrorMessage(err);
+  setError(typeof message === 'string' ? message : message?.message || 'Login failed. Please try again.');
+} finally {
       setLoading(false);
     }
   };
